@@ -65,12 +65,13 @@ def main():
     try:
         f = open('file.txt', 'r')
         inner = (f.read().split('\n'))
-        f.close()
         for i in inner:
             print(getValues(i))
         print(('\nFull elems list %(func)s' % {"func": set(func_names)}))
     except FileNotFoundError:
         print("can't open file")
+    finally:
+        f.close()
 
 
 main()
