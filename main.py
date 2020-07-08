@@ -1,6 +1,3 @@
-f = open('file.txt', 'r')
-inner = (f.read().split('\n'))
-f.close()
 val_list = ['0', '1', 'true', 'false']
 func_list = {'and': lambda val_1, val_2: int(val_1 and val_2),
              'nand': lambda val_1, val_2: int(not(val_1 and val_2)),
@@ -63,8 +60,17 @@ def getValues(innerStr):
     else:
         return 'ooops...'
 
-def main(innerStr):
-    for i in innerStr:
-        print (getValues(i))
-    print ('\nFull elems list %(func)s' % {"func": set(func_names)})
-main(inner)
+
+def main():
+    try:
+        f = open('file.txt', 'r')
+        inner = (f.read().split('\n'))
+        f.close()
+        for i in inner:
+            print(getValues(i))
+        print(('\nFull elems list %(func)s' % {"func": set(func_names)}))
+    except FileNotFoundError:
+        print("can't open file")
+
+
+main()
