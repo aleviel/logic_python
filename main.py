@@ -66,6 +66,6 @@ def getValues(innerStr):
 def main(innerStr):
     for i in innerStr:
         print (getValues(i))
-    print (set(func_names))
+    print ('\nFull elems list %(func)s' % {"func": set(func_names)})
 
 main(inner)
